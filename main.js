@@ -37,8 +37,20 @@ const displayController = (() => {
 
 })();
 
-const playerFactory = (name) => {
+const gameModule = (() => {
+  const playerFactory = (name, symbol) => {
+    const getName = () => name;
+    const getSymbol = () => symbol;
+    return { getName, getSymbol };
+  };
+  
+  const gameStart = () => {
+    const player1 = playerFactory('Zach', 'X')
+    const player2 = playerFactory('Zorian', 'O')
+    console.log(player1.getName())
+    console.log(player2.getName())
+  }
 
-  return { name };
-};
+  return { gameStart }
+})();
 

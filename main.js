@@ -17,6 +17,19 @@ const displayController = (() => {
       updateDisplay();
     });
   });
+  
+  let turn = 'X'
+  const turnController = () => {
+
+  }
+
+  const updateDisplay = () => {
+    array = gameBoard.getArray()
+    for (let i = 0; i < 9; i ++) {
+      cell[i].innerHTML = array[i]
+    }
+  }
+
 })();
 
 const playerFactory = (name) => {

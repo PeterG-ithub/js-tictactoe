@@ -24,6 +24,7 @@ h1 {
 .game-container {
   border: 1px solid black;
   align-self: center;
+  cursor: pointer;
   display: grid;
   grid-template-rows: 100px 100px 100px;
   grid-template-columns: 100px 100px 100px;
@@ -40,4 +41,23 @@ h1 {
 
 .square:hover {
   background-color: aqua;
+}
+
+.body-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.player-image img {
+  width: 20rem;
+}
+
+
+.player2 img {
+  transform: scaleX(-1);
+}
+
+.player-header {
+  font-size: 2rem;
+  text-align: center;
 }

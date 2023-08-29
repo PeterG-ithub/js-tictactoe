@@ -9,18 +9,23 @@ const gameBoard = (() => {
 
 const displayController = (() => {
   const cell = document.querySelectorAll('.square')
+  let turn = 'X'
 
   cell.forEach((element) => {
     element.addEventListener('click', () => {
       index = parseInt(element.getAttribute('id')) - 1;
-      gameBoard.addItem('X', index);
+      gameBoard.addItem(turn, index);
+      turnSwitcher();
       updateDisplay();
     });
   });
   
-  let turn = 'X'
-  const turnController = () => {
-
+  const turnSwitcher = () => {
+    if (turn == 'X') {
+      turn = 'O'
+    } else {
+      turn = 'X'
+    }
   }
 
   const updateDisplay = () => {

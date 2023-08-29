@@ -14,9 +14,11 @@ const displayController = (() => {
   cell.forEach((element) => {
     element.addEventListener('click', () => {
       index = parseInt(element.getAttribute('id')) - 1;
-      gameBoard.addItem(turn, index);
-      turnSwitcher();
-      updateDisplay();
+      if (cellEmpty(index)) {
+        gameBoard.addItem(turn, index);
+        turnSwitcher();
+        updateDisplay();
+      }
     });
   });
   
@@ -35,6 +37,15 @@ const displayController = (() => {
     }
   }
 
+  const cellEmpty = (index) => {
+    array = gameBoard.getArray()
+    if (array[index] == '') {
+      return true
+    } else {
+      return false
+    }
+  }
+  
 })();
 
 const gameModule = (() => {

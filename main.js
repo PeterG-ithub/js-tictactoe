@@ -18,6 +18,7 @@ const displayController = (() => {
         gameBoard.addItem(turn, index);
         turnSwitcher();
         updateDisplay();
+        gameModule.winner();
       }
     });
   });
@@ -62,6 +63,56 @@ const gameModule = (() => {
     console.log(player2.getName())
   }
 
-  return { gameStart }
+  const array = gameBoard.getArray();
+  const winner = () => {
+    if (winHorizontal() || winDiagonal() || winVertical()) {
+      console.log('WINNER!!!!')
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const winHorizontal = () => {
+    let temp = false
+    console.log(gameBoard.getArray())
+    for (let i = 0; i < 3; i++) {
+      console.log(i)
+      if ((array[3*i] === 'X' || array[3*i] === 'O') && array[3*i] === array[3*i + 1] && array[3*i] === array[3*i + 2]) {
+        console.log('win hori')
+        temp = true
+        break
+      } else {
+        temp = false
+      }
+    }
+    return temp
+  }
+  const winVertical = () => {
+    let temp = false
+    for (let i = 0; i < 3; i++) {
+      if ((array[i] === 'X' || array[i] === 'O') && array[i] === array[i + 3] && array[i] === array[i + 6]) {
+        console.log('win vert')
+        temp = true
+        break
+      } else {
+        temp = false
+      }
+    }
+    return temp
+  }
+
+  const winDiagonal = () => {
+    if (((array[0] === 'X' || array[0] === 'O') && array[0] === array[4] && array[0] === array[8])
+      || (array[6] === 'X' || array[6] === 'O') && array[6] === array[4] && array[6] === array[2]) {
+      console.log('win dia')
+      return true
+    } else {
+      return false
+    }
+  }
+
+
+  return { gameStart, winner }
 })();
 

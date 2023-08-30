@@ -61,3 +61,15 @@ h1 {
   font-size: 2rem;
   text-align: center;
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.reset-button {
+  font-size: 2rem;
+  padding: 1rem;
+  background-color: red;
+  color: white;
+}

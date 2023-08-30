@@ -47,6 +47,9 @@ const displayController = (() => {
     }
   }
   
+  return {
+    updateDisplay
+  }
 })();
 
 const gameModule = (() => {
@@ -112,7 +115,18 @@ const gameModule = (() => {
     }
   }
 
+  
+  const resetGame = () => {
+    console.log('Reset game!')
+    for (let i = 0; i < 9; i++) {
+      gameBoard.addItem('', i)
+    }
+    displayController.updateDisplay()
+  }
 
-  return { gameStart, winner }
+  const resetButton = document.querySelector('.reset-button')
+  resetButton.addEventListener('click', resetGame)
+
+  return { gameStart, winner, resetGame }
 })();
 

@@ -18,7 +18,9 @@ const displayController = (() => {
         gameBoard.addItem(turn, index);
         turnSwitcher();
         updateDisplay();
-        gameModule.winner();
+        if (gameModule.winCondition()) {
+        }
+        gameModule.drawCondition()
       }
     });
   });
@@ -67,7 +69,7 @@ const gameModule = (() => {
   }
 
   const array = gameBoard.getArray();
-  const winner = () => {
+  const winCondition = () => {
     if (winHorizontal() || winDiagonal() || winVertical()) {
       console.log('WINNER!!!!')
       return true
@@ -127,6 +129,12 @@ const gameModule = (() => {
   const resetButton = document.querySelector('.reset-button')
   resetButton.addEventListener('click', resetGame)
 
-  return { gameStart, winner, resetGame }
+  const drawCondition = () => {
+    if (!array.includes('')) {
+      console.log('draw')
+    }
+  }
+
+  return { gameStart, winCondition, resetGame, drawCondition }
 })();
 

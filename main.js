@@ -20,8 +20,7 @@ const displayController = (() => {
         updateDisplay()
         if (gameModule.winCondition()) {
           winDisplay()
-        }
-        if (gameModule.drawCondition()) {
+        } else if (gameModule.drawCondition()) {
           drawDisplay()
         }
       }
@@ -48,7 +47,7 @@ const displayController = (() => {
   const modalContainer = document.querySelector('.modal-container')
   const winModal = document.querySelector('.win-modal')
   const winDisplay = () => {
-    winText.innerHTML = 'Congratulations! You won? Who are you?'
+    winText.innerHTML = 'Congratulations! You won? But, Who are you?'
     modalContainer.classList.add('modal-show')
     winModal.classList.add('modal-show')
   }
@@ -56,6 +55,15 @@ const displayController = (() => {
   const drawDisplay = () => {
 
   }
+
+  const exitButton = document.querySelector('.close-modal')
+  
+  const closeModal = () => {
+    modalContainer.classList.remove('modal-show')
+    winModal.classList.remove('modal-show')
+    gameModule.resetGame()
+  }
+  exitButton.addEventListener('click', closeModal)
 
   const cellEmpty = (index) => {
     array = gameBoard.getArray()

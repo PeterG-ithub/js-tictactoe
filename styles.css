@@ -103,6 +103,7 @@ h1 {
   padding: .7rem;
   border-radius: 50%;
   float: right;
+  background-color: red;
 }
 
 .modal-show {

@@ -73,3 +73,38 @@ h1 {
   background-color: red;
   color: white;
 }
+
+.modal-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  content: '';
+}
+
+.win-modal {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  height: 20rem;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid black;
+  z-index: 1000;
+}
+
+.close-modal {
+  padding: .7rem;
+  border-radius: 50%;
+  float: right;
+}
+
+.modal-show {
+  display: block;
+}

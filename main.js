@@ -15,12 +15,15 @@ const displayController = (() => {
     element.addEventListener('click', () => {
       index = parseInt(element.getAttribute('id')) - 1;
       if (cellEmpty(index)) {
-        gameBoard.addItem(turn, index);
-        turnSwitcher();
-        updateDisplay();
+        gameBoard.addItem(turn, index)
+        turnSwitcher()
+        updateDisplay()
         if (gameModule.winCondition()) {
+          winDisplay()
         }
-        gameModule.drawCondition()
+        if (gameModule.drawCondition()) {
+          drawDisplay()
+        }
       }
     });
   });
@@ -38,6 +41,20 @@ const displayController = (() => {
     for (let i = 0; i < 9; i ++) {
       cell[i].innerHTML = array[i]
     }
+  }
+
+
+  const winText = document.querySelector('.win-text')
+  const modalContainer = document.querySelector('.modal-container')
+  const winModal = document.querySelector('.win-modal')
+  const winDisplay = () => {
+    winText.innerHTML = 'Congratulations! You won? Who are you?'
+    modalContainer.classList.add('modal-show')
+    winModal.classList.add('modal-show')
+  }
+
+  const drawDisplay = () => {
+
   }
 
   const cellEmpty = (index) => {

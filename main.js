@@ -52,18 +52,24 @@ const displayController = (() => {
     winModal.classList.add('modal-show')
   }
 
+  const drawText = document.querySelector('.draw-text')
+  const drawModal = document.querySelector('.draw-modal')
   const drawDisplay = () => {
-
+    drawText.innerHTML = 'Its a Draw!!!!'
+    modalContainer.classList.add('modal-show')
+    drawModal.classList.add('modal-show')
   }
 
-  const exitButton = document.querySelector('.close-modal')
+  const exitButton = document.querySelectorAll('.close-modal')
   
   const closeModal = () => {
+    console.log('close modal')
     modalContainer.classList.remove('modal-show')
     winModal.classList.remove('modal-show')
+    drawModal.classList.remove('modal-show')
     gameModule.resetGame()
   }
-  exitButton.addEventListener('click', closeModal)
+  exitButton.forEach(element => {element.addEventListener('click', closeModal)} )
 
   const cellEmpty = (index) => {
     array = gameBoard.getArray()
@@ -157,7 +163,9 @@ const gameModule = (() => {
   const drawCondition = () => {
     if (!array.includes('')) {
       console.log('draw')
+      return true
     }
+    
   }
 
   return { gameStart, winCondition, resetGame, drawCondition }

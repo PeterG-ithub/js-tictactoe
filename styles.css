@@ -85,7 +85,8 @@ h1 {
   content: '';
 }
 
-.win-modal {
+.win-modal,
+.draw-modal {
   display: none;
   position: absolute;
   top: 30%;
